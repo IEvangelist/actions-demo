@@ -1,13 +1,9 @@
 name: test
 on:
-  push:
-    branches: [ main ]
-    paths-ignore:
-      - README.md
-  pull_request:
-    branches: [ main ]
-    paths-ignore:
-      - README.md
+  workflow_run:
+    workflows: ["build"]
+    types:
+      - completed
 jobs:
   test:
     runs-on: ubuntu-latest

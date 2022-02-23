@@ -1,10 +1,7 @@
-name: Deploy
+name: Deploy Workflow
 on:
-  workflow_run:
-    workflows: ["Test"]
-    branches: [main]
-    types:
-      - completed
+  workflow_call:
+    
 jobs:
   deploy:
     runs-on: ubuntu-latest
@@ -24,3 +21,4 @@ jobs:
           # Static Web App workflow configurations: https://aka.ms/swaworkflowconfig
           app_location: "Blazor.ClientApp"
           output_location: "wwwroot"
+

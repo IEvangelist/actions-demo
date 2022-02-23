@@ -1,4 +1,4 @@
-name: build
+name: test
 on:
   push:
     branches: [ main ]
@@ -27,3 +27,5 @@ jobs:
       run: dotnet restore
     - name: Build
       run: dotnet build --configuration Release --no-restore
+    - name: Test
+      run: dotnet test --no-restore --verbosity normal

@@ -1,4 +1,4 @@
-name: build-and-test
+name: build-test-deploy
 on:
   push:
     paths-ignore:
@@ -8,6 +8,7 @@ on:
       - README.md
 jobs:
   build:
+    name: Build
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
@@ -26,6 +27,7 @@ jobs:
     - name: Build
       run: dotnet build --configuration Release --no-restore
   test:
+    name: Test
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
@@ -45,3 +47,21 @@ jobs:
       run: dotnet build --configuration Release --no-restore
     - name: Test
       run: dotnet test --no-restore --verbosity normal
+  deploy:
+    runs-on: ubuntu-latest
+    if: ${{ github.event_name == 'push' }}
+    name: Deploy
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          submodules: true
+      - name: Deploy to Azure Static Web Apps
+        id: builddeploy
+        uses: Azure/static-web-apps-deploy@v1
+        with:
+          azure_static_web_apps_api_token: ${{ secrets.AZURE_STATIC_WEB_APPS_API_TOKEN_SALMON_COAST_0F4CD4410 }}
+          repo_token: ${{ secrets.GITHUB_TOKEN }}
+          action: "upload"
+          # Static Web App workflow configurations: https://aka.ms/swaworkflowconfig
+          app_location: "Blazor.ClientApp"
+          output_location: "wwwroot"

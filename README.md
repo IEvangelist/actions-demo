@@ -4,9 +4,11 @@ The purpose of this repository is to demonstrate the ease of using GitHub Action
 
 > For additional resources, see [URL List: Learn .NET GitHub](https://www.theurlist.com/letslearndotnet-github-resources).
 
-## Build and deploy status 📛
+## Build and deploy status badges 📛
 
-[![CI/CD](https://github.com/IEvangelist/actions-demo/actions/workflows/continuous-integration.yml/badge.svg)](https://github.com/IEvangelist/actions-demo/actions/workflows/continuous-integration.yml)
+[![build](https://github.com/IEvangelist/actions-demo/actions/workflows/dotnet-build.yml/badge.svg)](https://github.com/IEvangelist/actions-demo/actions/workflows/dotnet-build.yml)
+[![test](https://github.com/IEvangelist/actions-demo/actions/workflows/dotnet-test.yml/badge.svg)](https://github.com/IEvangelist/actions-demo/actions/workflows/dotnet-test.yml)
+[![deploy](https://github.com/IEvangelist/actions-demo/actions/workflows/azure-deploy.yml/badge.svg)](https://github.com/IEvangelist/actions-demo/actions/workflows/azure-deploy.yml)
 
 ### Build workflow sequence diagram
 

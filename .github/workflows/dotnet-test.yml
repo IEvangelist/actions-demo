@@ -1,4 +1,4 @@
-name: 'Test Workflow'
+name: 'Test and Deploy Workflow'
 on:
   push:
     branches: [ main ]
@@ -31,6 +31,7 @@ jobs:
     - name: Test
       run: dotnet test --no-restore --verbosity normal
   deploy:
+    name: Deploy
     needs: Test
     if: ${{ github.event_name == 'push' }}
     uses: ./.github/workflows/azure-deploy.yml

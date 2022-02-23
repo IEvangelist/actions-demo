@@ -4,6 +4,23 @@ html, body {
     font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
 }
 
+body {
+    height: 100vh;
+    max-height: 100vh;
+    width: 100vw;
+    max-width: 100vw;
+    background-image: url('../background.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    color: aliceblue;
+    font-family: 'Courier New', Courier, monospace;
+}
+
+.carousel-control-next-icon, .carousel-control-prev-icon {
+    height: 3rem;
+    width: 4rem;
+}
+
 h1:focus {
     outline: none;
 }

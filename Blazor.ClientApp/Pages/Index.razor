@@ -1,9 +1,34 @@
 ﻿@page "/"
 
-<PageTitle>Index</PageTitle>
+<PageTitle>.NET 💜 GitHub Actions</PageTitle>
 
-<h1>Hello, world!</h1>
+<div class="p-2">
+    <h1 class="display-4 pop-box">Mod the .NET bot gallery</h1>
+    <br>
+    <BotGallery ImageNames="_imageNames" />
+    <br>
+    <blockquote class="blockquote text-center pop-box shadow-lg large-text dotnet-purple">
+        <p>Be inspired by these .NET bot images.</p>
+        <footer class="blockquote-footer">
+            Build your own 
+            <cite class=".NET mod bot">
+                <a href="https://mod-dotnet-bot.net" target="_blank">
+                https://mod-dotnet-bot.net
+                </a>
+            </cite>
+        </footer>
+    </blockquote>
+</div>
 
-Welcome to your new app.
-
-<SurveyPrompt Title="How is Blazor working for you?" />
+@code {
+    private readonly string[] _imageNames = new[]
+    {
+        "anniversary-1.png", "anniversary-2.png", "anniversary-3.png",
+        "as1.png", "as2.png", "as3.png", "as4.png", "as5.png",
+        "dotnet-bot_kamckinn.png", "dotnet-bot-1.png", "dotnet-bot-2.png",
+        "dotnet-bot-3.png", "dotnet-bot-7.png", "dotnet-bot.png",
+        "my-dotnet-bot-mod-1.png", "my-dotnet-bot-mod-2.png", 
+        "my-dotnet-bot-mod-3.png", "my-dotnet-bot-mod-beth1.png",
+        "my-dotnet-bot-mod-beth2.png", "my-dotnet-bot-mod.png"
+    };
+}

@@ -1,0 +1,17 @@
+.pop-box {
+  background-color: rgba(0, 0, 0, 0.5);
+  border-radius: 1.5rem;
+  border: 1px solid #fff;
+  padding: 1.5rem;
+}
+
+.dotnet-purple {
+  background-color: rgba(81, 43, 212, 0.5);
+  border: .3rem dotted #000;
+  color: black;
+}
+
+.large-text {
+  font-size: 2rem;
+  font-weight: 900;
+}

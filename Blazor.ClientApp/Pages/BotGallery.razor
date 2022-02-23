@@ -1,0 +1,53 @@
+<div id="gallery" class="carousel slide" data-ride="carousel">
+    <div class="carousel-inner">
+        @foreach (var (i, image) in ImageNames.Select((image, index) => (index, image)))
+        {
+            <div class="carousel-item @(i == _selectedIndex ? "active" : "")">
+                <img class="rounded mx-auto d-block" src="gallery/@(image)"
+                    alt=".NET bot image named @image">
+            </div>
+        }
+    </div>
+
+    <a class="carousel-control-prev" href="#gallery" role="button" data-slide="prev"
+        @onclick=@PreviousIndex>
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    </a>
+    <a class="carousel-control-next" href="#gallery" role="button" data-slide="next"
+        @onclick=@NextIndex>
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    </a>
+</div>
+
+@code {
+    int _selectedIndex = 0;
+    const string Key = "bot-gallery-index";
+
+    [Inject]
+    public IJSInProcessRuntime JavaScript { get; set; } = null!;
+
+    [Parameter]
+    public string[] ImageNames { get; set; } = Array.Empty<string>();
+
+    protected override void OnInitialized()
+    {
+        base.OnInitialized();
+
+        if (JavaScript.GetItem(Key) is { } index && int.TryParse(index, out var savedIndex))
+        {
+            _selectedIndex = savedIndex;
+        }
+    }
+
+    void PreviousIndex()
+    {
+        _selectedIndex = (_selectedIndex - 1 + ImageNames.Length) % ImageNames.Length;
+        JavaScript.SetItem(Key, _selectedIndex.ToString());
+    }
+
+    void NextIndex()
+    {
+        _selectedIndex = (_selectedIndex + 1) % ImageNames.Length;
+        JavaScript.SetItem(Key, _selectedIndex.ToString());
+    }
+}

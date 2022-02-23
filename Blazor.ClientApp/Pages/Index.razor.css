@@ -11,6 +11,13 @@
   color: #28c2d1;
 }
 
+.dotnet-badge {
+    background-color: rgb(81, 43, 212);
+    padding-left: .5rem;
+    padding-right: .5rem;
+    border-radius: .8rem;
+}
+
 .large-text {
   font-size: 2rem;
   font-weight: 900;

@@ -1,0 +1,4 @@
+.img-dotnet-yellow-shadow {
+     -webkit-filter: drop-shadow(0 0 .3rem #f7b54b);
+             filter: drop-shadow(0 0 .3rem #f7b54b);
+}

@@ -1,22 +1,27 @@
-<div id="gallery" class="carousel slide" data-ride="carousel">
+<div id="gallery" class="carousel slide">
     <div class="carousel-inner">
         @foreach (var (i, image) in ImageNames.Select((image, index) => (index, image)))
         {
             <div class="carousel-item @(i == _selectedIndex ? "active" : "")">
-                <img class="rounded mx-auto d-block" src="gallery/@(image)"
+                <img class="rounded mx-auto d-block img-dotnet-yellow-shadow"
+                    src="gallery/@(image)"
                     alt=".NET bot image named @image">
             </div>
         }
     </div>
 
-    <a class="carousel-control-prev" href="#gallery" role="button" data-slide="prev"
+    <button class="carousel-control-prev" type="button"
+        data-bs-target="#gallery" data-bs-slide="prev"
         @onclick=@PreviousIndex>
         <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-    </a>
-    <a class="carousel-control-next" href="#gallery" role="button" data-slide="next"
+        <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button"
+        data-bs-target="#gallery" data-bs-slide="next"
         @onclick=@NextIndex>
         <span class="carousel-control-next-icon" aria-hidden="true"></span>
-    </a>
+        <span class="visually-hidden">Next</span>
+    </button>
 </div>
 
 @code {

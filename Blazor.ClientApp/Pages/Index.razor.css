@@ -1,13 +1,13 @@
 .pop-box {
   background-color: rgba(0, 0, 0, 0.5);
   border-radius: 1.5rem;
-  border: 1px solid #fff;
+  border: .2rem solid #fff;
   padding: 1.5rem;
 }
 
 .dotnet-purple {
   background-color: rgba(81, 43, 212, 0.5);
-  border: .3rem dotted #28c2d1;
+  border: .2rem solid #28c2d1;
   color: #28c2d1;
 }
 

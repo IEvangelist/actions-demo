@@ -11,5 +11,5 @@
     <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.DevServer" Version="6.0.2" PrivateAssets="all" />
     <PackageReference Include="Blazor.LocalStorage.WebAssembly" Version="1.0.2" />
   </ItemGroup>
-
+<!-- Cam wuz also here -->
 </Project>

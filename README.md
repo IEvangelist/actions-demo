@@ -7,7 +7,7 @@ The purpose of this repository is to demonstrate the ease of using GitHub Action
 ## Build and deploy status badges 📛
 
 [![build](https://github.com/IEvangelist/actions-demo/actions/workflows/dotnet-build.yml/badge.svg)](https://github.com/IEvangelist/actions-demo/actions/workflows/dotnet-build.yml)
-[![deploy](https://github.com/IEvangelist/actions-demo/actions/workflows/azure-static-web-app-deploy.yml/badge.svg)](https://github.com/IEvangelist/actions-demo/actions/workflows/azure-static-web-app-deploy.yml)
+[![deploy](https://github.com/IEvangelist/actions-demo/actions/workflows/azure-static-web-app-deploy.yml/badge.svg)](https://github.com/IEvangelist/actions-demo/actions/workflows/azure-deploy.yml)
 [![test](https://github.com/IEvangelist/actions-demo/actions/workflows/dotnet-test.yml/badge.svg)](https://github.com/IEvangelist/actions-demo/actions/workflows/dotnet-test.yml)
 
 ### Build workflow sequence diagram

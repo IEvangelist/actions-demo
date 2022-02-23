@@ -1,4 +1,4 @@
-name: build
+name: build-and-test
 on:
   push:
     paths-ignore:
@@ -25,3 +25,23 @@ jobs:
       run: dotnet restore
     - name: Build
       run: dotnet build --configuration Release --no-restore
+  test:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - name: Setup .NET
+      uses: actions/setup-dotnet@v1
+      with:
+        dotnet-version: 6.0.x
+    - uses: actions/cache@v2
+      with:
+        path: ~/.nuget/packages
+        key: build-nuget-${{ hashFiles('**/packages.lock.json') }}
+        restore-keys: |
+          build-nuget
+    - name: Restore dependencies
+      run: dotnet restore
+    - name: Build
+      run: dotnet build --configuration Release --no-restore
+    - name: Test
+      run: dotnet test --no-restore --verbosity normal

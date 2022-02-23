@@ -27,3 +27,9 @@ sequenceDiagram
 ## Demo app 🔗
 
 **[Let's Learn GitHub Actions](https://aka.ms/lets-learn-github-actions)**
+
+## Local testing ☑️
+
+```dotnetcli
+dotnet dev-certs https --trust
+```

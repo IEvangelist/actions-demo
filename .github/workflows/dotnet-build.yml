@@ -1,4 +1,4 @@
-name: build
+name: Build workflow
 on:
   push:
     branches: [ main ]
@@ -10,6 +10,7 @@ on:
       - README.md
 jobs:
   build:
+    name: Build
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2

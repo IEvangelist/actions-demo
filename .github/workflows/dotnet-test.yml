@@ -1,7 +1,7 @@
-name: test
+name: Test and Deploy workflow
 on:
   push:
-    branches: [ main ]
+    branches: [ main, live ]
     paths-ignore:
       - README.md
   pull_request:
@@ -10,6 +10,7 @@ on:
       - README.md
 jobs:
   test:
+    name: Test
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
@@ -29,3 +30,9 @@ jobs:
       run: dotnet build --configuration Release --no-restore
     - name: Test
       run: dotnet test --no-restore --verbosity normal
+  deploy:
+    name: Deploy
+    needs: Test
+    # Only deploy when there's a push to the live branch.
+    if: ${{ (github.event_name == 'push') && (endsWith(github.ref, 'live')) }}
+    uses: ./.github/workflows/azure-deploy.yml

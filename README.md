@@ -8,7 +8,6 @@ The purpose of this repository is to demonstrate the ease of using GitHub Action
 
 [![Build workflow](https://github.com/IEvangelist/actions-demo/actions/workflows/dotnet-build.yml/badge.svg)](https://github.com/IEvangelist/actions-demo/actions/workflows/dotnet-build.yml)
 [![Test and Deploy workflow](https://github.com/IEvangelist/actions-demo/actions/workflows/dotnet-test.yml/badge.svg)](https://github.com/IEvangelist/actions-demo/actions/workflows/dotnet-test.yml)
-[![Deploy workflow](https://github.com/IEvangelist/actions-demo/actions/workflows/azure-deploy.yml/badge.svg)](https://github.com/IEvangelist/actions-demo/actions/workflows/azure-deploy.yml)
 
 ### Build workflow sequence diagram
 

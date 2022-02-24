@@ -6,7 +6,6 @@ on:
         required: true
       githubToken:
         required: true
-
 jobs:
   deploy:
     runs-on: ubuntu-latest
@@ -26,4 +25,3 @@ jobs:
           # Static Web App workflow configurations: https://aka.ms/swaworkflowconfig
           app_location: "Blazor.ClientApp"
           output_location: "wwwroot"
-

@@ -32,12 +32,10 @@ jobs:
       run: dotnet test --no-restore --verbosity normal
   deploy:
     name: Deploy
-    needs: Test
+    needs: test
     # Only deploy when there's a push to the live branch.
     if: ${{ (github.event_name == 'push') && (endsWith(github.ref, 'live')) }}
     uses: ./.github/workflows/azure-deploy.yml
-    with:
-      secrets:
-        azureApiToken: ${{ secrets.AZURE_STATIC_WEB_APPS_API_TOKEN_SALMON_COAST_0F4CD4410 }}
-        githubToken: ${{ secrets.GITHUB_TOKEN }}
-
+    secrets:
+      azureApiToken: ${{ secrets.AZURE_STATIC_WEB_APPS_API_TOKEN_SALMON_COAST_0F4CD4410 }}
+      githubToken: ${{ secrets.GITHUB_TOKEN }}

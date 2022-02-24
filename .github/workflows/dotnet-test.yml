@@ -1,7 +1,7 @@
-name: 'Test and Deploy Workflow'
+name: Test and Deploy workflow
 on:
   push:
-    branches: [ main ]
+    branches: [ main, live ]
     paths-ignore:
       - README.md
   pull_request:
@@ -33,5 +33,6 @@ jobs:
   deploy:
     name: Deploy
     needs: Test
-    if: ${{ github.event_name == 'push' }}
+    # Only deploy when there's a push to the live branch.
+    if: ${{ (github.event_name == 'push') && (endsWith(github.ref, 'live')) }}
     uses: ./.github/workflows/azure-deploy.yml

@@ -8,6 +8,7 @@ The purpose of this repository is to demonstrate the ease of using GitHub Action
 
 [![Build workflow](https://github.com/IEvangelist/actions-demo/actions/workflows/dotnet-build.yml/badge.svg)](https://github.com/IEvangelist/actions-demo/actions/workflows/dotnet-build.yml)
 [![Test and Deploy workflow](https://github.com/IEvangelist/actions-demo/actions/workflows/dotnet-test.yml/badge.svg)](https://github.com/IEvangelist/actions-demo/actions/workflows/dotnet-test.yml)
+[![Lint Code Base](https://github.com/IEvangelist/actions-demo/actions/workflows/super-linter.yml/badge.svg)](https://github.com/IEvangelist/actions-demo/actions/workflows/super-linter.yml)
 [![CodeQL workflow](https://github.com/IEvangelist/actions-demo/actions/workflows/codeql.yml/badge.svg)](https://github.com/IEvangelist/actions-demo/actions/workflows/codeql.yml)
 
 ### Build workflow sequence diagram

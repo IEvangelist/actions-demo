@@ -12,10 +12,12 @@
 }
 
 .dotnet-badge {
-    background-color: rgb(81, 43, 212);
-    padding-left: .5rem;
-    padding-right: .5rem;
-    border-radius: .8rem;
+  background-color: rgb(81, 43, 212);
+  padding: .5rem 1rem;
+  border-radius: 0;
+  font-family: 'Open Sans', sans-serif;
+  font-weight: normal;
+  text-transform: uppercase;
 }
 
 .large-text {

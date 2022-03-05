@@ -38,16 +38,13 @@
     {
         base.OnInitialized();
 
-        if (JavaScript.GetItem(Key) is { } index && int.TryParse(index, out var savedIndex))
-        {
-            _selectedIndex = savedIndex;
-        }
+        _selectedIndex = JavaScript.GetItem<int>(Key);
     }
 
     void PreviousIndex()
     {
         _selectedIndex = (_selectedIndex - 1 + ImageNames.Length) % ImageNames.Length;
-        JavaScript.SetItem(Key, _selectedIndex.ToString());
+        JavaScript.SetItem(Key, _selectedIndex);
     }
 
     void NextIndex()

@@ -1,3 +1,12 @@
+<div class="grid">
+    <button type="button"
+        class="btn-close btn-close-white" 
+        aria-label="Close" @onclick=@(_ => LocalStorage.Clear())>
+    </button>
+    <div class="code">
+        <pre>localStorage.length: @LocalStorage.Length()</pre>
+    </div>
+</div>
 <div id="gallery" class="carousel slide">
     <div class="carousel-inner">
         @foreach (var (i, image) in ImageNames.Select((image, index) => (index, image)))
@@ -29,7 +38,7 @@
     const string Key = "bot-gallery-index";
 
     [Inject]
-    public IJSInProcessRuntime JavaScript { get; set; } = null!;
+    public IJSInProcessRuntime LocalStorage { get; set; } = null!;
 
     [Parameter]
     public string[] ImageNames { get; set; } = Array.Empty<string>();
@@ -38,18 +47,18 @@
     {
         base.OnInitialized();
 
-        _selectedIndex = JavaScript.GetItem<int>(Key);
+        _selectedIndex = LocalStorage.GetItem<int>(Key);
     }
 
     void PreviousIndex()
     {
         _selectedIndex = (_selectedIndex - 1 + ImageNames.Length) % ImageNames.Length;
-        JavaScript.SetItem(Key, _selectedIndex);
+        LocalStorage.SetItem(Key, _selectedIndex);
     }
 
     void NextIndex()
     {
         _selectedIndex = (_selectedIndex + 1) % ImageNames.Length;
-        JavaScript.SetItem(Key, _selectedIndex.ToString());
+        LocalStorage.SetItem(Key, _selectedIndex.ToString());
     }
 }

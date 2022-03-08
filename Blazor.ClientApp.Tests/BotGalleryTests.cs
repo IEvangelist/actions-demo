@@ -16,6 +16,13 @@ public class BotGalleryTests : TestContext
             "window.localStorage.getItem", "bot-gallery-index")
             .SetResult("0");
 
+        JSInterop.Setup<double>(
+            "eval", "window.localStorage.length")
+            .SetResult(0);
+
+        JSInterop.SetupVoid(
+            "window.localStorage.clear");
+
         Services.AddSingleton<IJSInProcessRuntime>(
             sp => (IJSInProcessRuntime)sp.GetRequiredService<IJSRuntime>());
 
@@ -26,7 +33,13 @@ public class BotGalleryTests : TestContext
                 new[] { "test.png" }));
 
         // Assert
-        cut.MarkupMatches(@"<div id=""gallery"" class=""carousel slide"" >
+        cut.MarkupMatches(@"<div class=""grid"" >
+  <button type=""button"" class=""btn-close btn-close-white"" aria-label=""Close""  ></button>
+  <div class=""code"" >
+    <pre >localStorage.length: 0</pre>
+  </div>
+</div>
+<div id=""gallery"" class=""carousel slide"" >
   <div class=""carousel-inner"" >
     <div class=""carousel-item active"" >
       <img class=""rounded mx-auto d-block img-dotnet-yellow-shadow"" src=""gallery/test.png"" alt="".NET bot image named test.png"" >

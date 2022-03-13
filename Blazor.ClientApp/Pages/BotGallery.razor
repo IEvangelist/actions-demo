@@ -4,7 +4,7 @@
         aria-label="Close" @onclick=@(_ => LocalStorage.Clear())>
     </button>
     <div class="code">
-        <pre>localStorage.length: @LocalStorage.Length()</pre>
+        <pre>localStorage.length: @LocalStorage.Length</pre>
     </div>
 </div>
 <div id="gallery" class="carousel slide">
@@ -38,7 +38,7 @@
     const string Key = "bot-gallery-index";
 
     [Inject]
-    public IJSInProcessRuntime LocalStorage { get; set; } = null!;
+    public IStorage LocalStorage { get; set; } = null!;
 
     [Parameter]
     public string[] ImageNames { get; set; } = Array.Empty<string>();

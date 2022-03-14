@@ -3,6 +3,9 @@ using Bunit;
 using Blazor.ClientApp.Pages;
 using Microsoft.JSInterop;
 using Microsoft.Extensions.DependencyInjection;
+using System.Text.Json;
+using System.Collections.Generic;
+using System;
 
 namespace Blazor.ClientApp.Tests;
 
@@ -12,19 +15,7 @@ public class BotGalleryTests : TestContext
     public void VerifyBotGalleryRendering()
     {
         // Arrange
-        JSInterop.Setup<string>(
-            "window.localStorage.getItem", "bot-gallery-index")
-            .SetResult("0");
-
-        JSInterop.Setup<double>(
-            "eval", "window.localStorage.length")
-            .SetResult(0);
-
-        JSInterop.SetupVoid(
-            "window.localStorage.clear");
-
-        Services.AddSingleton<IJSInProcessRuntime>(
-            sp => (IJSInProcessRuntime)sp.GetRequiredService<IJSRuntime>());
+        Services.AddSingleton<IStorage, TestStorage>();
 
         // Act
         var cut = RenderComponent<BotGallery>(
@@ -54,5 +45,29 @@ public class BotGalleryTests : TestContext
     <span class=""visually-hidden"" >Next</span>
   </button>
 </div>");
+    }
+
+    internal class TestStorage : IStorage
+    {
+        private readonly Dictionary<string, string> _storage =
+            new(StringComparer.OrdinalIgnoreCase);
+
+        public double Length => _storage.Count;
+
+        public void Clear() => _storage.Clear();
+
+        public TResult? GetItem<TResult>(
+            string key, JsonSerializerOptions? options = null) =>
+            _storage.TryGetValue(key, out var value)
+                ? JsonSerializer.Deserialize<TResult>(value.ToString(), options)
+                : default;
+
+        public string? Key(double index) => default;
+
+        public void RemoveItem(string key) => _storage.Remove(key);
+
+        public void SetItem<TArg>(
+            string key, TArg value, JsonSerializerOptions? options = null) =>
+            _storage[key] = JsonSerializer.Serialize(value, options);
     }
 }
